@@ -22,14 +22,17 @@ jobs:
 
       # Build Ballerina Project
       - name: Ballerina Build
-        run: bal pack ./ballerina
+        run: bal pack
+        working-directory: ./ballerina
         env:
           JAVA_HOME: /usr/lib/jvm/default-jvm
 
-      # Build Module Examples
-      - name: Ballerina Examples Build
-        run: chmod +x ./examples/build.sh && ./examples/build.sh build
+      # Push to Ballerina Staging Central
+      - name: Push to Staging
+        run: bal push
         env:
+          BALLERINA_CENTRAL_ACCESS_TOKEN: ${{ secrets.BALLERINA_CENTRAL_STAGE_ACCESS_TOKEN }}
+          WORKING_DIR: ./random
           JAVA_HOME: /usr/lib/jvm/default-jvm
 
       # Test Ballerina Project
