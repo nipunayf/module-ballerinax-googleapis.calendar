@@ -24,7 +24,7 @@ jobs:
 
       # Build Module Examples
       - name: Ballerina Examples Build
-        run: chmod +x ./examples/build.sh && ./examples/build.sh
+        run: chmod +x ./examples/build.sh && ./examples/build.sh build
         env:
           JAVA_HOME: /usr/lib/jvm/default-jvm
 
